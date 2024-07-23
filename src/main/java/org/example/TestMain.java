@@ -1,17 +1,18 @@
 package org.example;
 
 
+import java.util.Scanner;
 
 public class TestMain {
 
     public static void main(String[] args) {
-//        Scanner scanner = new Scanner(System.in);
-//        String text = scanner.nextLine();
-//        System.out.println(textModifier(text));
-
-        String text = "t e   xt-yu+iun 123456-78";
-        System.out.println(text);
+        Scanner scanner = new Scanner(System.in);
+        String text = scanner.nextLine();
         System.out.println(textModifier(text));
+
+//        String text = "t e   xt-yu+i1un";
+//        System.out.println(text);
+//        System.out.println(textModifier(text));
     }
 
     public static String textModifier(String text){
@@ -40,7 +41,7 @@ public class TestMain {
             }
 
         }
-
+        // замена на восклицательный знак
         for (int i = 0; i < textSB.length(); i++) { //
             if (textSB.charAt(i) == '+') {
                 textSB.insert(i,'!');
@@ -49,9 +50,26 @@ public class TestMain {
             }
 
         }
-        System.out.println(textSB);
 
-        return "";
+//        считаем
+        int sum=0;
+
+        for (int i = 0; i < textSB.length(); i++) { //
+            if (Character.isDigit(textSB.charAt(i))) {
+                sum=sum+Integer.parseInt(String.valueOf(textSB.charAt(i)));
+
+            }
+
+        }
+        if (sum!=0){
+            textSB.append(" "+sum);
+        }
+
+//        System.out.println(sum);
+
+//        System.out.println(textSB);
+
+        return textSB.toString();
     }
 }
 
