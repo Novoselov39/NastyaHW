@@ -11,7 +11,7 @@ public class TestMain {
         System.out.println(textModifier(text));
 
 //        String text = "t e   xt-yu+i1un";
-//        System.out.println(text);
+//        System.outmaqqrintln(text);
 //        System.out.println(textModifier(text));
     }
 
@@ -57,6 +57,8 @@ public class TestMain {
         for (int i = 0; i < textSB.length(); i++) { //
             if (Character.isDigit(textSB.charAt(i))) {
                 sum=sum+Integer.parseInt(String.valueOf(textSB.charAt(i)));
+                textSB.deleteCharAt(i);
+                i--;
 
             }
 
