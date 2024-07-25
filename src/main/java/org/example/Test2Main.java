@@ -12,11 +12,15 @@ import java.util.StringTokenizer;
             Scanner scanner = new Scanner(System.in);
             String str = scanner.nextLine();
             str = removingSpaces(str);
+            str=chekWord(str); // !!!!!!!!!ищем слова и убираем лишние пробелы
             str = swappingCharacters(str, '-');
             str = str.replace("+", "!");
             int sumDigits = calculateSum(str);
 
+
             str = str.replaceAll("\\d", ""); //!!!!!!!!!!поправил регулярное выражение
+
+
 
 //            str = str.replaceAll(String.valueOf(0), ""); //!!!! зачем это строка? мы строкой выше уже удалили все числа
             str=str.trim();                                     //!!!!!!!!!Удаляем последний пробел, который прилетело к нам из removingSpaces()
@@ -47,7 +51,7 @@ import java.util.StringTokenizer;
             return s.replace("-","");
         }
 
-        public static int calculateSum(String text) {
+        public static int calculateSum(String text) {         //!!!!!!!!переписал
             int sum = 0;
 
             for (int i = 0; i < text.length(); i++) {
@@ -60,6 +64,20 @@ import java.util.StringTokenizer;
 
             }
             return sum;
+        }
+
+        public static String chekWord(String str){
+            StringBuilder strSB = new StringBuilder(str.trim());
+            for (int i = 2; i < strSB.length()-2; i++) { // проверяем на целостность слов
+
+                if((strSB.charAt(i-2)== ' ' || strSB.charAt(i-2)== '+')  & (strSB.charAt(i+2)== ' ' || strSB.charAt(i+2)== '+')& strSB.charAt(i) == ' '){
+
+                    strSB.deleteCharAt(i);
+                    i--;
+                }
+            }
+            return strSB.toString();
+
         }
     }
 

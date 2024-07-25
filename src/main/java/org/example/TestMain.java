@@ -16,16 +16,26 @@ public class TestMain {
     }
 
     public static String textModifier(String text){
-        StringBuilder textSB = new StringBuilder(text);
+        StringBuilder textSB = new StringBuilder(text.trim());
         // удаляем пробелы
 
-        if (textSB.charAt(0) == ' ')  textSB.deleteCharAt(0);// проверяем первый символ
 
         for (int i = 1; i < textSB.length(); i++) { // проверяем остальные сиволы и если надо удаляем
             if(textSB.charAt(i) == ' ' & textSB.charAt(i-1)== ' '){
                 textSB.deleteCharAt(i);
                 i--;
             };
+        }
+
+
+
+        for (int i = 2; i < textSB.length()-2; i++) { // проверяем на целостность слов
+
+            if((textSB.charAt(i-2)== ' ' || textSB.charAt(i-2)== '+')  & (textSB.charAt(i+2)== ' ' || textSB.charAt(i+2)== '+')& textSB.charAt(i) == ' '){
+                System.out.println(textSB.charAt(i+1));
+                textSB.deleteCharAt(i);
+                i--;
+            }
         }
         //System.out.println(textSB);
 
